@@ -1,4 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.urls import reverse_lazy
 
 from .models import Article
 
@@ -11,3 +14,13 @@ class HomePageView(ListView):
 class DetailPageView(DetailView):
     model = Article
     template_name = "article_detail.html"
+
+class ArticleCreateView(UserPassesTestMixin, CreateView):
+    model = Article
+    template_name = "article_create.html"
+    fields = ["title", "body", "publish_date"]
+    success_url = reverse_lazy('home')
+    
+    def test_func(self):
+        return self.request.user.is_superuser
+

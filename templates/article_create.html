@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Новая статья — Панель управления{% endblock %}
+
+{% block content %}
+<div class="py-5" style="max-width: 700px; margin: 0 auto;">
+    
+    <nav aria-label="breadcrumb" class="mb-4">
+        <a href="{% url 'home' %}" class="text-decoration-none text-muted small">
+            &larr; Отмена и назад
+        </a>
+    </nav>
+
+    {% if user.is_superuser %}
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+            <h2 class="fw-bold mb-4">Написать статью</h2>
+            
+            <form method="post" class="needs-validation">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">Заголовок</label>
+                    <input type="text" name="title" class="form-control form-control-lg" id="id_title" placeholder="Введите название статьи..." required>
+                    {% if form.title.errors %}<div class="text-danger small">{{ form.title.errors }}</div>{% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.publish_date.id_for_label }}" class="form-label fw-semibold">Дата публикации</label>
+                    <input type="date" name="publish_date" class="form-control" id="id_publish_date" required>
+                    <div class="form-text">Выберите дату, когда статья должна появиться в блоге.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="{{ form.body.id_for_label }}" class="form-label fw-semibold">Текст статьи</label>
+                    <textarea name="body" class="form-control" id="id_body" rows="12" placeholder="Расскажите свою историю..." required></textarea>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary px-5 py-2 fw-bold">Опубликовать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center">
+        <h4 class="alert-heading">Доступ ограничен</h4>
+        <p>Только администратор (oriviao) может создавать новые записи.</p>
+        <a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm">Вернуться на главную</a>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    /* Улучшаем внешний вид полей */
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
+    }
+    label { color: #444; }
+</style>
+{% endblock content %}

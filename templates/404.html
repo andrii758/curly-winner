@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
+    <title>Ошибка 404 (Не найдено)!!1</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        html, code { font: 15px/22px arial, sans-serif; }
+        html { background: #fff; color: #222; padding: 15px; }
+        body { margin: 7% auto 0; max-width: 390px; min-height: 180px; padding: 30px 0 15px; }
+        
+        /* Робот Google. Можно заменить на свою картинку, если захочешь */
+        * > body { 
+            background: url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat; 
+            padding-right: 205px; 
+        }
+        
+        p { margin: 11px 0 22px; overflow: hidden; }
+        ins { color: #777; text-decoration: none; }
+        a { color: #4285f4; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Логотип твоего блога вместо Google */
+        .blog-logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #424242;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 772px) {
+            body { background: none; margin-top: 0; max-width: none; padding-right: 0; }
+        }
+    </style>
+</head>
+<body>
+    <a href="/">
+        <span class="blog-logo">MY_BLOG</span>
+    </a>
+    <p>
+        <b>404.</b> <ins>Это ошибка.</ins>
+    </p>
+    <p>
+        Запрошенный URL <code>{{ request.path }}</code> не был найден на этом сервере.
+        <br><br>
+        <ins>Это всё, что мы знаем.</ins>
+    </p>
+    <p>
+        <a href="/">Вернуться на главную &rarr;</a>
+    </p>
+</body>
+</html>

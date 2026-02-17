@@ -24,6 +24,13 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {% if user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link fw-bold text-primary" href="{% url 'article_create' %}" style="letter-spacing: 0.5px;">
+                    +Add Article
+                </a>
+            </li>
+            {% endif %}
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
