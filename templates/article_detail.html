@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="py-4">
+    <a href="{% url 'home' %}" class="text-decoration-none text-muted small">
+        &larr; Назад к списку
+    </a>
+
+    <h1 class="display-5 fw-bold mt-3 mb-3">{{ article.title }}</h1>
+    
+    <hr class="my-4 opacity-25">
+
+    <div class="article-body">
+        <p class="lead text-dark" style="line-height: 1.8; white-space: pre-line;">
+            {{ article.body }}
+        </p>
+    </div>
+
+    <footer class="mt-5 pt-4 border-top">
+        <div class="author-badge">
+            <span class="author-label">Автор</span>
+            <span class="author-name">oriviao</span>
+        </div>
+    </footer>
+</div>
+
+<style>
+    .article-body {
+        max-width: 800px;
+        font-family: 'Georgia', serif;
+        font-size: 1.2rem;
+    }
+
+    /* Стили для красивой плашки автора */
+    .author-badge {
+        display: inline-flex;
+        align-items: center;
+        background-color: #f0f2f5; /* Светло-голубоватый/серый фон */
+        padding: 5px 15px;
+        border-radius: 50px; /* Скругленные края (pill-style) */
+        border: 1px solid #e0e0e0;
+    }
+
+    .author-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #6c757d;
+        margin-right: 8px;
+        font-weight: bold;
+    }
+
+    .author-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #0d6efd; /* Приятный синий цвет акцента */
+    }
+</style>
+{% endblock content  %}
