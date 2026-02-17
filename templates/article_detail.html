@@ -3,59 +3,67 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-<div class="py-4">
-    <a href="{% url 'home' %}" class="text-decoration-none text-muted small">
-        &larr; Назад к списку
+<div class="py-5" style="max-width: 800px; margin: 0 auto;">
+    <a href="{% url 'home' %}" class="text-decoration-none text-primary fw-medium small">
+        <span class="me-1">←</span> Назад к статьям
     </a>
 
-    <h1 class="display-5 fw-bold mt-3 mb-3">{{ article.title }}</h1>
+    <h1 class="display-4 fw-bold mt-4 mb-3" style="letter-spacing: -1px; color: #1a1a1a;">
+        {{ article.title }}
+    </h1>
     
-    <hr class="my-4 opacity-25">
+    <div class="d-flex align-items-center gap-3 mb-5 pb-2 border-bottom border-light">
+        <div class="author-circle">O</div>
+        <div>
+            <div class="fw-bold text-dark" style="font-size: 0.95rem;">oriviao</div>
+            <div class="text-muted small">{{ article.publish_date|date:"d E Y" }}</div>
+        </div>
+    </div>
 
     <div class="article-body">
-        <p class="lead text-dark" style="line-height: 1.8; white-space: pre-line;">
+        <p class="article-text">
             {{ article.body }}
         </p>
     </div>
 
-    <footer class="mt-5 pt-4 border-top">
-        <div class="author-badge">
-            <span class="author-label">Автор</span>
-            <span class="author-name">oriviao</span>
-        </div>
-    </footer>
 </div>
 
 <style>
-    .article-body {
-        max-width: 800px;
-        font-family: 'Georgia', serif;
-        font-size: 1.2rem;
+    /* Текст статьи: крупный, с хорошим интервалом */
+    .article-text {
+        font-family: 'Inter', -apple-system, sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.7;
+        color: #292929;
+        white-space: pre-line;
     }
 
-    /* Стили для красивой плашки автора */
-    .author-badge {
-        display: inline-flex;
+    /* Аватарка-заглушка (буква O на стильном фоне) */
+    .author-circle {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #6e8efb, #a7a7af);
+        color: white;
+        border-radius: 50%;
+        display: flex;
         align-items: center;
-        background-color: #f0f2f5; /* Светло-голубоватый/серый фон */
-        padding: 5px 15px;
-        border-radius: 50px; /* Скругленные края (pill-style) */
-        border: 1px solid #e0e0e0;
-    }
-
-    .author-label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #6c757d;
-        margin-right: 8px;
+        justify-content: center;
         font-weight: bold;
+        font-size: 1.1rem;
     }
 
-    .author-name {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #0d6efd; /* Приятный синий цвет акцента */
+    /* Декоративная точка в конце */
+    .divider-dot::before {
+        content: "...";
+        display: block;
+        letter-spacing: 10px;
+        font-size: 1.5rem;
+        color: #ccc;
+    }
+
+    /* Убираем подчеркивание у ссылки при наведении */
+    a:hover {
+        text-decoration: underline !important;
     }
 </style>
-{% endblock content  %}
+{% endblock %}

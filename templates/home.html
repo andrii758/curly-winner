@@ -1,10 +1,65 @@
-{% extends "base.html" %}
-{% block title %}Home Page{% endblock title %}
+{% extends 'base.html' %}
+
+{% block title %}Главная — Блог oriviao{% endblock %}
+
 {% block content %}
-{% for article in article_list %}
-<article>
-    <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
-    <p>{{ article.body }}</p>
-</article>
-{% endfor %}
-{% endblock content %}
+<p>Количество статей: {{ articles.count }}</p>
+<div class="py-5" style="max-width: 800px; margin: 0 auto;">
+
+    <div class="article-list">
+        {% for article in article_list %}
+            <article class="mb-5 pb-4 border-bottom border-light-subtle">
+                <h2 class="h3 mb-3">
+                    <a href="{% url 'article_detail' article.pk %}" class="text-decoration-none text-dark hover-link">
+                        {{ article.title }}
+                    </a>
+                </h2>
+
+                <p class="text-secondary mb-3" style="line-height: 1.6;">
+                    {{ article.body|truncatechars:200 }}
+                </p>
+
+                <div class="d-flex align-items-center gap-2">
+                    <div class="author-circle-sm">O</div>
+                    <div class="small">
+                        <span class="fw-semibold text-dark">oriviao</span>
+                        <span class="text-muted mx-1">•</span>
+                        <span class="text-muted">{{ article.publish_date|date:"d E Y" }}</span>
+                    </div>
+                </div>
+            </article>
+        {% empty %}
+            <p class="text-muted">Статей пока нет, но они скоро появятся.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    /* Эффект при наведении на заголовок */
+    .hover-link {
+        transition: color 0.2s ease-in-out;
+    }
+    .hover-link:hover {
+        color: #0d6efd !important;
+    }
+
+    /* Маленький аватар для списка */
+    .author-circle-sm {
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, #6e8efb, #a7a7af);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+
+    /* Убираем подчеркивание у ссылок */
+    a {
+        transition: all 0.2s;
+    }
+</style>
+{% endblock %}
