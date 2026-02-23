@@ -1,0 +1,93 @@
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: #fdfdfd;
+    color: #292929;
+    line-height: 1.6;
+}
+
+.navbar {
+    border-bottom: 1px solid #eee;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    font-size: 1.5rem;
+}
+
+.article-card {
+    transition: transform 0.2s ease;
+    border: none;
+    background: transparent;
+}
+
+.hover-link {
+    color: #1a1a1a;
+    transition: color 0.2s;
+}
+
+.hover-link:hover {
+    color: #0d6efd !important;
+}
+
+.article-body-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-line;
+}
+
+.author-circle, .author-circle-sm {
+    background: linear-gradient(135deg, #6e8efb, #a7a7af);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.author-circle { width: 45px; height: 45px; font-size: 1.2rem; }
+.author-circle-sm { width: 28px; height: 28px; font-size: 0.8rem; }
+
+.card-form {
+    border-radius: 15px;
+    border: 1px solid #f0f0f0 !important;
+}
+
+footer {
+    padding: 3rem 0;
+    border-top: 1px solid #eee;
+    color: #6c757d;
+}
+
+/* Дополнительные штрихи для типографики */
+.fw-800 { font-weight: 800; }
+
+.article-preview {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Обрезает текст после 3-й строки */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.admin-actions a {
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.article-card:hover .admin-actions a {
+    opacity: 1;
+}
+.btn-white {
+    background: #fff;
+    color: #444;
+    transition: all 0.2s;
+}
+.btn-white:hover {
+    background: #f8f9fa;
+    color: #000;
+}
+.fw-800 { font-weight: 800; }
