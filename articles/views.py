@@ -1,10 +1,15 @@
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin
+
 from django.urls import reverse_lazy
 
 from .models import Article
 from .forms import ArticleForm
+
+# every time i click "SAVE" button below the form
+# form.is_valid() func is automatically triggered 
+# if you are using ClassBasedViews(CBV)
 
 
 class HomePageView(ListView):
@@ -24,6 +29,7 @@ class ArticleCreateView(UserPassesTestMixin, CreateView):
     
     def test_func(self):
         return self.request.user.is_superuser
+
 
 class ArticleEditView(UserPassesTestMixin, UpdateView):
     model = Article

@@ -15,3 +15,4 @@ class ArticleForm(forms.ModelForm):
                 ),
         }
 
+
